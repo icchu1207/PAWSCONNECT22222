@@ -1,0 +1,77 @@
+/* ============================================================
+   login.css — Admin Login Page
+   PawsConnect | Kalibo Pet Shelter
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+    font-family: 'Nunito', Arial, sans-serif;
+}
+
+.login-box {
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 30px rgba(255,92,157,0.2);
+    width: 360px;
+}
+
+.login-box h3 {
+    color: #e91e63;
+    text-align: center;
+    margin-bottom: 28px;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+
+.login-box .form-control {
+    border-radius: 10px;
+    border: 1.5px solid #ffd6e7;
+    padding: 10px 14px;
+    font-size: .95rem;
+    transition: border-color 0.2s;
+}
+.login-box .form-control:focus {
+    border-color: #e91e63;
+    box-shadow: 0 0 0 3px rgba(233,30,99,0.1);
+    outline: none;
+}
+
+.btn-login {
+    width: 100%;
+    background: linear-gradient(135deg, #e91e63, #c2185b);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px;
+    font-weight: 800;
+    font-size: 1rem;
+    font-family: 'Nunito', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 15px rgba(233,30,99,0.3);
+}
+.btn-login:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(233,30,99,0.4);
+}
+
+.back-link {
+    display: block;
+    text-align: center;
+    margin-top: 16px;
+    color: #e91e63;
+    font-size: .85rem;
+    font-weight: 700;
+    text-decoration: none;
+    opacity: .75;
+    transition: opacity 0.2s;
+}
+.back-link:hover { opacity: 1; }
