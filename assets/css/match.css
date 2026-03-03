@@ -1,0 +1,176 @@
+/* ============================================================
+   match.css — Find a Match Form Styles
+   PawsConnect | Kalibo Pet Shelter
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.match-hero {
+  background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 60%, #c9006b 100%);
+  color: white;
+  padding: 48px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.match-hero::before {
+  content: "🐾";
+  font-size: 220px;
+  opacity: .06;
+  position: absolute;
+  right: -30px; top: -30px;
+  line-height: 1;
+  pointer-events: none;
+}
+.match-hero h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -.5px; }
+.match-hero p  { font-size: 1.05rem; opacity: .9; margin: 0; }
+
+/* ── STEP BAR ── */
+.steps-bar {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.step-item { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.step-item .step-num {
+  width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: .9rem;
+  background: #f0d6e6; color: #c0607e;
+  transition: all .3s; flex-shrink: 0;
+}
+.step-item.active .step-num { background: #ff1a75; color: white; box-shadow: 0 4px 14px rgba(255,26,117,.4); }
+.step-item.done   .step-num { background: #28a745; color: white; }
+.step-item .step-label { font-size: .78rem; font-weight: 700; color: #c0607e; white-space: nowrap; }
+.step-item.active .step-label { color: #ff1a75; }
+.step-item.done   .step-label { color: #28a745; }
+.step-connector { width: 28px; height: 2px; background: #f0d6e6; margin: 0 4px; align-self: center; flex-shrink: 0; }
+.step-connector.done { background: #28a745; }
+
+/* ── PROGRESS BAR ── */
+.progress-wrap { height: 5px; background: #ffd6ea; border-radius: 99px; margin-bottom: 28px; overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, #ff6fab, #ff1a75); border-radius: 99px; transition: width .4s ease; }
+
+/* ── FORM SECTIONS ── */
+.form-section { display: none; animation: fadeSlide .35s ease; }
+.form-section.active { display: block; }
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION CARD ── */
+.section-card {
+  background: white; border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,.06);
+  padding: 32px; margin-bottom: 24px;
+}
+.section-heading {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 24px; padding-bottom: 16px;
+  border-bottom: 2px solid #ffeaf4;
+}
+.section-heading .heading-icon {
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, #ff6fab, #ff1a75);
+  border-radius: 12px; display: flex; align-items: center;
+  justify-content: center; font-size: 1.2rem; color: white; flex-shrink: 0;
+}
+.section-heading h4 { font-size: 1.15rem; font-weight: 800; color: #cc0055; margin: 0; }
+.section-heading p  { font-size: .8rem; color: #aaa; margin: 0; }
+
+/* ── FORM CONTROLS ── */
+.form-label { font-weight: 700; font-size: .85rem; color: #555; margin-bottom: 6px; }
+.form-label .req { color: #ff1a75; }
+.optional-badge {
+  font-size: .72rem; font-weight: 700;
+  background: #f3e8ef; color: #c080a0;
+  border-radius: 20px; padding: 1px 8px; margin-left: 6px;
+}
+.form-control, .form-select {
+  border: 2px solid #f0e0ea; border-radius: 12px;
+  padding: 10px 14px; font-size: .93rem;
+  font-family: 'Nunito', sans-serif;
+  transition: border-color .2s, box-shadow .2s;
+  background: #fffafd;
+}
+.form-control:focus, .form-select:focus {
+  border-color: #ff6fab; box-shadow: 0 0 0 3px rgba(255,26,117,.1);
+  background: white; outline: none;
+}
+.form-control::placeholder { color: #ccc; }
+
+/* ── PREFERENCE TILES ── */
+.pref-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+.pref-tile {
+  position: relative;
+  cursor: pointer;
+}
+.pref-tile input[type="radio"] {
+  position: absolute; opacity: 0; width: 0; height: 0;
+}
+.pref-tile .tile-inner {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 6px;
+  background: #fff5fa; border: 2px solid #ffd6ea;
+  border-radius: 14px; padding: 14px 10px;
+  text-align: center;
+  transition: all .2s;
+  font-size: .85rem; font-weight: 700; color: #888;
+}
+.pref-tile .tile-inner .tile-emoji { font-size: 1.6rem; line-height: 1; }
+.pref-tile input:checked + .tile-inner {
+  border-color: #ff1a75;
+  background: #fff0f6;
+  color: #ff1a75;
+  box-shadow: 0 4px 14px rgba(255,26,117,.15);
+}
+.pref-tile .tile-inner:hover { border-color: #ff6fab; background: #fff8fc; }
+
+/* ── NAV BUTTONS ── */
+.nav-btns { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; }
+.btn-prev {
+  background: white; border: 2px solid #ffd6ea; color: #ff1a75;
+  border-radius: 12px; padding: 11px 28px; font-weight: 700;
+  font-family: 'Nunito', sans-serif; font-size: .95rem; cursor: pointer;
+  transition: all .2s; display: flex; align-items: center; gap: 8px;
+}
+.btn-prev:hover { background: #fff0f6; border-color: #ff6fab; }
+.btn-next {
+  background: linear-gradient(135deg, #ff6fab, #ff1a75); border: none; color: white;
+  border-radius: 12px; padding: 12px 32px; font-weight: 800;
+  font-family: 'Nunito', sans-serif; font-size: .95rem; cursor: pointer;
+  transition: all .2s; box-shadow: 0 4px 16px rgba(255,26,117,.35);
+  display: flex; align-items: center; gap: 8px;
+}
+.btn-next:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(255,26,117,.45); }
+.btn-submit {
+  background: linear-gradient(135deg, #ff6fab, #ff1a75); border: none; color: white;
+  border-radius: 12px; padding: 14px 40px; font-weight: 800;
+  font-family: 'Nunito', sans-serif; font-size: 1.05rem; cursor: pointer;
+  transition: all .2s; box-shadow: 0 6px 20px rgba(255,26,117,.4);
+  display: flex; align-items: center; gap: 10px;
+}
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(255,26,117,.5); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 576px) {
+  .match-hero h1 { font-size: 1.8rem; }
+  .section-card  { padding: 20px; }
+  .step-label    { display: none; }
+  .pref-group    { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
+}

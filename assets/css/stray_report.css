@@ -1,0 +1,213 @@
+/* ============================================================
+   stray_report.css — Stray Report Form Styles
+   PawsConnect | Kalibo Pet Shelter
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── HERO ── */
+.stray-hero {
+  background: linear-gradient(135deg, var(--pink) 0%, var(--pink-dark) 60%, #c9006b 100%);
+  color: white;
+  padding: 48px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.stray-hero::before {
+  content: "🐾";
+  font-size: 220px;
+  opacity: .06;
+  position: absolute;
+  right: -30px; top: -30px;
+  line-height: 1;
+  pointer-events: none;
+}
+.stray-hero h1 { font-size: 2.6rem; font-weight: 800; letter-spacing: -.5px; margin: 0 0 8px; }
+.stray-hero p  { font-size: 1.05rem; opacity: .9; margin: 0; }
+
+/* ── MAIN CARD ── */
+.report-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(255,26,117,.10);
+  padding: 36px;
+  margin-top: -48px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 10;
+}
+
+/* ── SECTION DIVIDERS ── */
+.form-section-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 28px 0 18px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #ffeaf4;
+}
+.form-section-title:first-of-type { margin-top: 0; }
+.form-section-title .title-icon {
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, #ff6fab, #ff1a75);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: white; flex-shrink: 0;
+}
+.form-section-title h5 {
+  font-size: 1rem; font-weight: 800;
+  color: #cc0055; margin: 0;
+}
+.form-section-title p {
+  font-size: .78rem; color: #aaa; margin: 0;
+}
+
+/* ── FORM CONTROLS ── */
+.form-label {
+  font-weight: 700; font-size: .85rem;
+  color: #555; margin-bottom: 6px;
+}
+.form-label .req { color: #ff1a75; }
+.optional-badge {
+  font-size: .72rem; font-weight: 700;
+  background: #f3e8ef; color: #c080a0;
+  border-radius: 20px; padding: 1px 8px; margin-left: 6px;
+}
+.form-control, .form-select {
+  border: 2px solid #f0e0ea;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: .93rem;
+  font-family: 'Nunito', sans-serif;
+  transition: border-color .2s, box-shadow .2s;
+  background: #fffafd;
+}
+.form-control:focus, .form-select:focus {
+  border-color: #ff6fab;
+  box-shadow: 0 0 0 3px rgba(255,26,117,.1);
+  background: white; outline: none;
+}
+.form-control::placeholder { color: #ccc; }
+textarea.form-control { resize: vertical; min-height: 100px; }
+
+/* ── ANIMAL TYPE TILES ── */
+.type-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+.type-tile { position: relative; cursor: pointer; }
+.type-tile input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+.type-tile .tile-inner {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 6px;
+  background: #fff5fa; border: 2px solid #ffd6ea;
+  border-radius: 14px; padding: 14px 10px;
+  text-align: center;
+  transition: all .2s;
+  font-size: .85rem; font-weight: 700; color: #888;
+}
+.type-tile .tile-inner .tile-emoji { font-size: 1.6rem; line-height: 1; }
+.type-tile input:checked + .tile-inner {
+  border-color: #ff1a75; background: #fff0f6;
+  color: #ff1a75; box-shadow: 0 4px 14px rgba(255,26,117,.15);
+}
+.type-tile .tile-inner:hover { border-color: #ff6fab; background: #fff8fc; }
+
+/* ── CONDITION PILLS ── */
+.condition-group {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px;
+}
+.condition-pill { position: relative; cursor: pointer; }
+.condition-pill input[type="radio"] { position: absolute; opacity: 0; width: 0; height: 0; }
+.condition-pill .pill-inner {
+  display: flex; align-items: center; gap: 8px;
+  background: #fff5fa; border: 2px solid #ffd6ea;
+  border-radius: 99px; padding: 8px 18px;
+  font-size: .88rem; font-weight: 700; color: #888;
+  transition: all .2s;
+}
+.condition-pill input:checked + .pill-inner {
+  border-color: #ff1a75; background: #fff0f6;
+  color: #ff1a75; box-shadow: 0 4px 14px rgba(255,26,117,.12);
+}
+.condition-pill .pill-inner:hover { border-color: #ff6fab; background: #fff8fc; }
+
+/* ── FILE UPLOAD ── */
+.file-upload-wrap {
+  border: 2px dashed #ffa8cc;
+  border-radius: 14px; padding: 28px;
+  text-align: center; background: #fff8fc;
+  cursor: pointer; transition: all .2s;
+  position: relative;
+}
+.file-upload-wrap:hover { border-color: #ff1a75; background: #fff0f7; }
+.file-upload-wrap input[type="file"] {
+  position: absolute; inset: 0;
+  opacity: 0; cursor: pointer;
+  width: 100%; height: 100%;
+}
+.file-upload-wrap .upload-icon { font-size: 2rem; color: #ff6fab; }
+.file-upload-wrap p { margin: 8px 0 0; font-size: .85rem; color: #aaa; }
+.file-upload-wrap .file-name { font-size: .82rem; color: #ff1a75; font-weight: 700; margin-top: 6px; min-height: 18px; }
+
+/* ── SUBMIT BUTTON ── */
+.btn-submit {
+  background: linear-gradient(135deg, #ff6fab, #ff1a75);
+  border: none; color: white;
+  border-radius: 12px; padding: 14px 40px;
+  font-weight: 800; font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem; cursor: pointer;
+  transition: all .2s;
+  box-shadow: 0 6px 20px rgba(255,26,117,.4);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.btn-submit:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(255,26,117,.5); }
+.btn-submit:active { transform: translateY(0); }
+
+/* ── SUCCESS SCREEN ── */
+.success-screen {
+  text-align: center; padding: 60px 24px;
+}
+.success-icon {
+  width: 90px; height: 90px;
+  background: linear-gradient(135deg, #ff6fab, #ff1a75);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.4rem; margin: 0 auto 24px;
+  box-shadow: 0 8px 28px rgba(255,26,117,.35);
+  animation: popIn .5s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.success-screen h2 { font-size: 2rem; font-weight: 800; color: #cc0055; margin-bottom: 12px; }
+.success-screen p  { color: #888; font-size: 1rem; }
+.btn-back-home {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 28px;
+  background: linear-gradient(135deg, #ff6fab, #ff1a75);
+  color: white; border-radius: 12px; padding: 12px 30px;
+  font-weight: 800; text-decoration: none;
+  font-family: 'Nunito', sans-serif; font-size: .95rem;
+  box-shadow: 0 4px 16px rgba(255,26,117,.35);
+  transition: all .2s;
+}
+.btn-back-home:hover { transform: translateY(-2px); color: white; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 576px) {
+  .stray-hero h1 { font-size: 1.8rem; }
+  .report-card   { padding: 20px; }
+  .type-group    { grid-template-columns: repeat(3, 1fr); }
+}

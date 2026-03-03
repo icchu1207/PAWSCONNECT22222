@@ -1,0 +1,436 @@
+/* ============================================================
+   adopt.css — Adoption Form Styles
+   PawsConnect | Kalibo Pet Shelter
+   ============================================================ */
+
+/* ── BASE ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+/* ── HERO BANNER ── */
+.adopt-hero {
+  background: linear-gradient(20deg, var(--pink) 0%, var(--pink-dark) 60%, #dd79ae 100%);
+  color: white;
+  padding: 48px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.adopt-hero::before {
+  content: "🐾";
+  font-size: 220px;
+  opacity: .06;
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  line-height: 1;
+  pointer-events: none;
+}
+.adopt-hero h1 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  letter-spacing: -.5px;
+}
+.adopt-hero p {
+  font-size: 1.05rem;
+  opacity: .9;
+}
+
+/* ── PET PREVIEW CARD ── */
+.pet-preview {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(255, 26, 117, .13);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-top: -48px;
+  margin-bottom: 36px;
+  position: relative;
+  z-index: 10;
+}
+.pet-preview img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 3px solid #ffd6ea;
+}
+.pet-placeholder {
+  width: 100px;
+  height: 100px;
+  border-radius: 16px;
+  background: #ffeaf4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  border: 3px solid #ffd6ea;
+  flex-shrink: 0;
+}
+.pet-preview .pet-name {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ff1a75;
+  margin: 0 0 4px;
+}
+.pet-preview .pet-meta {
+  font-size: .88rem;
+  color: #888;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pet-preview .pet-meta span {
+  background: #fff0f6;
+  color: #ff4d9e;
+  border-radius: 20px;
+  padding: 2px 12px;
+  font-weight: 600;
+}
+
+/* ── STEP INDICATOR ── */
+.steps-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+.step-item .step-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: .9rem;
+  background: #f0d6e6;
+  color: #c0607e;
+  transition: all .3s;
+  flex-shrink: 0;
+}
+.step-item.active .step-num {
+  background: #ff1a75;
+  color: white;
+  box-shadow: 0 4px 14px rgba(255, 26, 117, .4);
+}
+.step-item.done .step-num {
+  background: #28a745;
+  color: white;
+}
+.step-item .step-label {
+  font-size: .78rem;
+  font-weight: 700;
+  color: #c0607e;
+  white-space: nowrap;
+}
+.step-item.active .step-label { color: #ff1a75; }
+.step-item.done   .step-label { color: #28a745; }
+
+.step-connector {
+  width: 28px;
+  height: 2px;
+  background: #f0d6e6;
+  margin: 0 4px;
+  align-self: center;
+  flex-shrink: 0;
+}
+.step-connector.done { background: #28a745; }
+
+/* ── PROGRESS BAR ── */
+.progress-wrap {
+  height: 5px;
+  background: #ffd6ea;
+  border-radius: 99px;
+  margin-bottom: 28px;
+  overflow: hidden;
+}
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff6fab, #ff1a75);
+  border-radius: 99px;
+  transition: width .4s ease;
+}
+
+/* ── FORM SECTIONS ── */
+.form-section {
+  display: none;
+  animation: fadeSlide .35s ease;
+}
+.form-section.active { display: block; }
+
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── SECTION CARD ── */
+.section-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, .06);
+  padding: 32px;
+  margin-bottom: 24px;
+}
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid #ffeaf4;
+}
+.section-heading .heading-icon {
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #ff6fab, #ff1a75);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: white;
+  flex-shrink: 0;
+}
+.section-heading h4 {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #cc0055;
+  margin: 0;
+}
+.section-heading p {
+  font-size: .8rem;
+  color: #aaa;
+  margin: 0;
+}
+
+/* ── FORM CONTROLS ── */
+.form-label {
+  font-weight: 700;
+  font-size: .85rem;
+  color: #555;
+  margin-bottom: 6px;
+}
+.form-label .req { color: #ff1a75; }
+
+.optional-badge {
+  font-size: .72rem;
+  font-weight: 700;
+  background: #f3e8ef;
+  color: #c080a0;
+  border-radius: 20px;
+  padding: 1px 8px;
+  margin-left: 6px;
+}
+
+.form-control,
+.form-select {
+  border: 2px solid #f0e0ea;
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: .93rem;
+  font-family: 'Nunito', sans-serif;
+  transition: border-color .2s, box-shadow .2s;
+  background: #fffafd;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: #ff6fab;
+  box-shadow: 0 0 0 3px rgba(255, 26, 117, .1);
+  background: white;
+  outline: none;
+}
+.form-control::placeholder { color: #ccc; }
+textarea.form-control { resize: vertical; min-height: 90px; }
+
+.info-tip {
+  font-size: .8rem;
+  color: #bbb;
+  margin-top: 4px;
+}
+
+/* ── CHECKBOXES ── */
+.check-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff5fa;
+  border: 2px solid #ffd6ea;
+  border-radius: 12px;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all .2s;
+}
+.check-item:hover { border-color: #ff6fab; background: #fff0f6; }
+.check-item input[type="checkbox"] {
+  accent-color: #ff1a75;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.check-item input:checked + span { color: #ff1a75; font-weight: 700; }
+.check-item span { font-size: .88rem; font-weight: 600; color: #666; }
+
+/* ── NAV BUTTONS ── */
+.nav-btns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+}
+.btn-prev {
+  background: white;
+  border: 2px solid #ffd6ea;
+  color: #ff1a75;
+  border-radius: 12px;
+  padding: 11px 28px;
+  font-weight: 700;
+  font-family: 'Nunito', sans-serif;
+  font-size: .95rem;
+  cursor: pointer;
+  transition: all .2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-prev:hover { background: #fff0f6; border-color: #ff6fab; }
+
+.btn-next {
+  background: linear-gradient(135deg, #ff6fab, #ff1a75);
+  border: none;
+  color: white;
+  border-radius: 12px;
+  padding: 12px 32px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  font-size: .95rem;
+  cursor: pointer;
+  transition: all .2s;
+  box-shadow: 0 4px 16px rgba(255, 26, 117, .35);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-next:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 26, 117, .45);
+}
+.btn-next:active { transform: translateY(0); }
+
+.btn-submit {
+  background: linear-gradient(135deg, #ff6fab, #ff1a75);
+  border: none;
+  color: white;
+  border-radius: 12px;
+  padding: 14px 40px;
+  font-weight: 800;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: all .2s;
+  box-shadow: 0 6px 20px rgba(255, 26, 117, .4);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(255, 26, 117, .5);
+}
+
+/* ── AGREEMENT BOX ── */
+.agreement-box {
+  background: #fff5fa;
+  border: 2px solid #ffd6ea;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 24px;
+  font-size: .88rem;
+  color: #666;
+  line-height: 1.7;
+}
+.agreement-box .agreement-title {
+  font-weight: 800;
+  color: #cc0055;
+  margin-bottom: 8px;
+  font-size: .95rem;
+  display: block;
+}
+
+/* ── SUCCESS SCREEN ── */
+.success-screen {
+  text-align: center;
+  padding: 60px 24px;
+}
+.success-icon {
+  width: 90px;
+  height: 90px;
+  background: linear-gradient(135deg, #ff6fab, #ff1a75);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.4rem;
+  margin: 0 auto 24px;
+  box-shadow: 0 8px 28px rgba(255, 26, 117, .35);
+  animation: popIn .5s cubic-bezier(.34, 1.56, .64, 1);
+}
+@keyframes popIn {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.success-screen h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #cc0055;
+  margin-bottom: 12px;
+}
+.success-screen p { color: #888; font-size: 1rem; }
+
+.btn-back-home {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 28px;
+  background: linear-gradient(135deg, #ff6fab, #ff1a75);
+  color: white;
+  border-radius: 12px;
+  padding: 12px 30px;
+  font-weight: 800;
+  text-decoration: none;
+  font-family: 'Nunito', sans-serif;
+  font-size: .95rem;
+  box-shadow: 0 4px 16px rgba(255, 26, 117, .35);
+  transition: all .2s;
+}
+.btn-back-home:hover { transform: translateY(-2px); color: white; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 576px) {
+  .adopt-hero h1  { font-size: 1.8rem; }
+  .pet-preview    { flex-direction: column; text-align: center; }
+  .pet-preview .pet-meta { justify-content: center; }
+  .section-card   { padding: 20px; }
+  .step-label     { display: none; }
+}
